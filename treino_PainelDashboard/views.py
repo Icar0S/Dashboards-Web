@@ -13,10 +13,9 @@ def retorna_total_vendido(request):
         return JsonResponse({'total': total})
 
 def retorna_total_despesa(request):
-    despesas = Vendas.objects.all().aggregate(Sum('despesas'))['despesas__sum']
+    despesa = Vendedor.objects.all().aggregate(Sum('despesa'))['despesa__sum']
     if request.method == "GET":
-        return JsonResponse({'despesas': despesas})
-
+        return JsonResponse({'despesa': despesa})
 
 
 def relatorio_faturamento(request):
